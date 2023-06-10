@@ -1,6 +1,7 @@
 import 'package:appfuture/components/loginwidget.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class login_Screen extends StatelessWidget {
   login_Screen({Key? key}) : super(key: key);
   TextEditingController passwordController = TextEditingController();
@@ -9,8 +10,7 @@ class login_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
+      home: Scaffold( 
         body: loginWidget(),
       ),
     );

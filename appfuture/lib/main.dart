@@ -1,9 +1,8 @@
-import 'package:appfuture/screens/login.dart';
-import 'package:appfuture/screens/signup.dart';
+import 'package:appfuture/screens/shopsPage.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return signup_screen();
+    return shopsPage();
   }
 }

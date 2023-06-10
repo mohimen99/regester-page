@@ -1,216 +1,192 @@
+import 'package:appfuture/components/homeWidget.dart';
+import 'package:appfuture/screens/login.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class signup_widget extends StatelessWidget {
   signup_widget({Key? key}) : super(key: key);
 
   String nationality = "";
   var items = ["Jordanian", "palestinian", "syrian", "lebanese", "turkish"];
+  @required
   TextEditingController firstName = TextEditingController();
+  @required
   TextEditingController middleName = TextEditingController();
+  @required
   TextEditingController lastName = TextEditingController();
+  @required
   TextEditingController email = TextEditingController();
+  @required
   TextEditingController password = TextEditingController();
+  @required
   TextEditingController confirmPassword = TextEditingController();
+  @required
   TextEditingController phoneNumber = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(
+            "Sign Up",
+            style: TextStyle(
+                color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+          brightness: Brightness.light,
+          backgroundColor: Color.fromARGB(255, 39, 155, 232),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => homeWidget(),
+                  ),
+                );
+              },
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 20,
+                color: Colors.black,
+              )),
+        ),
         drawer: Drawer(),
         body: SingleChildScrollView(
           child: Column(
+            key: _formKey,
             children: [
-              SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                height: 60,
-                child: TextField(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
                   controller: firstName,
-                  keyboardType: TextInputType.name,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.only(left: 14, right: 14),
                     hintText: 'First Name',
-                    hintStyle: TextStyle(color: Colors.black38),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.abc,
+                      color: Color(0xff5ac18e),
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                height: 60,
+                padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: middleName,
-                  keyboardType: TextInputType.name,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.only(left: 14, right: 14),
                     hintText: 'Middle Name',
-                    hintStyle: TextStyle(color: Colors.black38),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.abc,
+                      color: Color(0xff5ac18e),
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                height: 60,
+                padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: lastName,
-                  keyboardType: TextInputType.name,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.only(left: 14, right: 14),
-                    hintText: 'Last Name ',
-                    hintStyle: TextStyle(color: Colors.black38),
+                    hintText: 'Last Name',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.abc,
+                      color: Color(0xff5ac18e),
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      ),
-                    ]),
-                height: 60,
-                child: TextField(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
                   controller: email,
                   keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.only(top: 14),
+                    hintText: 'Email',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
                     prefixIcon: Icon(
                       Icons.email,
                       color: Color(0xff5ac18e),
                     ),
-                    hintText: 'Email',
-                    hintStyle: TextStyle(color: Colors.black38),
                   ),
                 ),
               ),
               SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                height: 60,
+                padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: password,
                   obscureText: true,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.only(top: 14),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Color(0xff5ac18e),
-                      ),
-                      hintText: 'Password',
-                      hintStyle: TextStyle(color: Colors.black38)),
+                    hintText: 'Password',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.password,
+                      color: Color(0xff5ac18e),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                height: 60,
+                padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: confirmPassword,
                   obscureText: true,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.only(top: 14),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Color(0xff5ac18e),
-                      ),
-                      hintText: 'Confirm Password',
-                      hintStyle: TextStyle(color: Colors.black38)),
+                    hintText: 'Confirm Password',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.password,
+                      color: Color(0xff5ac18e),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 10),
               Container(
-                alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                height: 60,
+                padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: phoneNumber,
                   keyboardType: TextInputType.phone,
-                  style: TextStyle(color: Colors.black87),
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.only(left: 14, right: 14),
                     hintText: 'Phone Number',
-                    hintStyle: TextStyle(color: Colors.black38),
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.phone_android,
+                      color: Color(0xff5ac18e),
+                    ),
                   ),
                 ),
               ),
@@ -249,31 +225,63 @@ class signup_widget extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  )
+                  // BoxShadow(
+                  //   color: Colors.black,
+                  //   blurRadius: 25,
+                  // )
                 ]),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      elevation: 100,
-                      padding: EdgeInsets.all(15),
-                      fixedSize: Size(125, 45),
-                      primary: Colors.blue,
-                      onPrimary: Colors.black),
+                    backgroundColor: Color.fromARGB(255, 255, 82, 82),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
+                    ),
+                    padding: EdgeInsets.all(15),
+                    fixedSize: Size(200, 50),
+                  ),
                   onLongPress: () {
                     print("you press me too long");
                   },
                   onPressed: () {
-                    print("");
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+                    }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => login_Screen(),
+                      ),
+                    );
                   },
                   child: Text(
                     "Submit",
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
-              )
+              ),
+              Row(
+                children: [
+                  const Text('Already have an account?'),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => login_Screen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Login",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
+                    ),
+                  )
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
             ],
           ),
         ),
